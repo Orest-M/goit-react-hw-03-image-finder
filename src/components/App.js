@@ -49,6 +49,10 @@ export class App extends Component {
           ? alert('По цьому запиту не знайдено зображень')
           : this.setState({ showButton: false });
       } else {
+        if (response.data.hits.length < 20) {
+          this.setState({ showButton: false });
+        }
+
         parameter === 'q'
           ? this.setState({ images: response.data.hits, showButton: true })
           : this.setState(item => {
